@@ -1,0 +1,8 @@
+.dot {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  background: url(https://images.dafei.es/Snow100px.png);
+  background-size: 30% 30%;
+  background-repeat: no-repeat;
+}

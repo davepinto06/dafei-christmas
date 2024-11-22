@@ -1,10 +1,12 @@
 ---
 import CountDown from "../components/Countdown"
+import SnowFall from "../components/SnowFall"
 import Layout from "../layouts/Layout.astro"
 ---
 
 <Layout title="Dafei's Christmas" description="Time until Christmas">
-  <main class="main-container">
+  <main id="snowfall-container" class="main-container">
+    <SnowFall client:load />
     <CountDown client:load />
     <img class="moon" src="https://images.dafei.es/home-moon.png" alt="Moon" />
     <img
