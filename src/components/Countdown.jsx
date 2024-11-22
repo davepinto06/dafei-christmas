@@ -1,34 +1,30 @@
 import { useEffect, useState } from "preact/hooks"
+import "./CountDown.css"
 
 export default function Countdown() {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  })
+  const calculateTimeLeft = () => {
+    const now = new Date()
+    const christmas = new Date(now.getFullYear(), 11, 25)
+
+    if (now > christmas) {
+      christmas.setFullYear(christmas.getFullYear() + 1)
+    }
+
+    const diff = christmas - now
+
+    return {
+      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((diff / (1000 * 60)) % 60),
+      seconds: Math.floor((diff / 1000) % 60),
+    }
+  }
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft)
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const now = new Date()
-      const christmas = new Date(now.getFullYear(), 11, 25)
-
-      if (now > christmas) {
-        christmas.setFullYear(christmas.getFullYear() + 1)
-      }
-
-      const diff = christmas - now
-
-      console.log("Now:", now)
-      console.log("Christmas:", christmas)
-      console.log("Difference (ms):", diff)
-
-      setTimeLeft({
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((diff / (1000 * 60)) % 60),
-        seconds: Math.floor((diff / 1000) % 60),
-      })
+      setTimeLeft(calculateTimeLeft())
     }, 1000)
 
     return () => clearInterval(timer)
