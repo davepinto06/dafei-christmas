@@ -60,7 +60,6 @@
   .countdown-item {
     width: 100px;
     height: 100px;
-    padding: 3.5rem;
   }
 
   .countdown-value {
@@ -85,6 +84,27 @@
 
   .countdown-value {
     font-size: 3rem;
+  }
+
+  .countdown-label {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 600px) {
+  .countdown-title {
+    font-size: 4rem;
+    margin-top: 0;
+  }
+
+  .countdown-item {
+    width: 110px;
+    height: 110px;
+    padding: 2rem;
+  }
+
+  .countdown-value {
+    font-size: 2.5rem;
   }
 
   .countdown-label {
